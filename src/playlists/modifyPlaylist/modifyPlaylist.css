@@ -1,0 +1,51 @@
+.btn-submit {
+    background-color: #f16e00;
+    color: black;
+    width: 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 30px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.cursor-none {
+    cursor: default;
+}
+
+form label, input {
+    margin: 10px;
+    color: white;
+}
+
+form h3 {
+    color: chocolate;
+    font-style: italic;
+    margin-left: 10px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid black;
+    border-style: dotted;
+    text-align: left;
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+table th {
+    color: #f16e00;
+    padding: 15px;
+    cursor: pointer;
+}
+
+table td {
+    width: 50px;
+    padding: 15px;
+}
+
+table td.chk-centered, th.chk-centered {
+    padding: 8px;
+    text-align: center;
+    width: 10px;
+}

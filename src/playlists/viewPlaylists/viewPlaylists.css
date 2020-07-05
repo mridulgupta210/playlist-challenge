@@ -1,0 +1,21 @@
+.add-btn {
+    margin: 12px;
+    border-radius: 5px;
+    height: 30px;
+    color: black;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.no-playlist {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    flex-direction: column;
+    color: white;
+}

@@ -1,0 +1,27 @@
+article h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+
+.action-btns {
+    float: right;
+    cursor: pointer;
+}
+
+.card {
+    transition: box-shadow .3s;
+    color:white;
+    box-sizing: border-box;
+    background-color: chocolate;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 4px 2px 4px 2px;
+    width: 250px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 0 11px white; 
+}
