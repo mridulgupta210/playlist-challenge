@@ -1,3 +1,14 @@
+==========================
+
+Here are a few points about my solution:
+- Running "npm install" and "npm start" will run both the server and the web app concurrently.
+- I have used React.js for front-end development and Redux.js for state management.
+- The React app has been created using create-react-app template.
+- Apart from the mandatory requirements, I have also completed one bonus requirement which is "Sorting of songs" (only in ascending order on all properties of a song).
+- I have also implemented "Deletion of a Playlist".
+
+==========================
+
 Playlist Challenge
 ==========================
 
