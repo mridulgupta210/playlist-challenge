@@ -1,31 +1,14 @@
-==========================
-
-Here are a few points about my solution:
-- Running "npm install" and "npm start" will run both the server and the web app concurrently.
-- I have used React.js for front-end development and Redux.js for state management.
-- The React app has been created using create-react-app template.
-- I also have added a "Loader" which will show up on the screen while an Api call is in progress.
-- Apart from the mandatory requirements, I have also completed one bonus requirement which is "Sorting of songs" (only in ascending order on all properties of a song).
-- I have also implemented "Deletion of a Playlist".
-
-==========================
-
 Playlist Challenge
 ==========================
 
 > Build a single page web application for creating playlists from a library of
 > songs!
 
-Included in this folder is a Node.js web server which includes an API and a
-skeleton for your browser-based playlist application.
+Included in this folder is a Node.js web server which includes an API and a browser-based playlist application.
 
-The API includes endpoints to complete the challenge. You don't need to change,
-but you can if it helps.
+The API includes endpoints to complete the challenge. 
 
-The skeleton includes Bootstrap. Feel free to use any CSS or JavaScript
-frameworks your ❤️ desires.
-
-To install and start the web server:
+To install and start the web server + web app:
 
 ```bash
 npm install
