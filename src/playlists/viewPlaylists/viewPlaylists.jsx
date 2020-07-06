@@ -1,78 +1,66 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import './viewPlaylists.css';
 import { requestPlaylists, requestDeletePlaylist } from './actions';
 import { Mode } from '../../common/services/constants';
 import PlaylistCard from '../playlistCard/playlistCard.jsx';
-import './viewPlaylists.css';
 
-class ViewPlaylists extends Component {
-    navigateToPlaylist = (mode, playlistId) => {
-        this.props.history.push({
+export default function ViewPlaylists() {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const playlists = useSelector(state => state.viewPlaylists.playlists);
+
+    useEffect(() => {
+        dispatch(requestPlaylists());
+    }, []);
+
+    const navigateToPlaylist = (mode, playlistId) => {
+        history.push({
             pathname: `playlist${playlistId !== undefined ? `/${playlistId}` : ""}`,
             state: { mode }
         });
     }
 
-    onDelete = (event, playlistId) => {
+    const onDelete = (event, playlistId) => {
         event.stopPropagation();
-        this.props.actions.requestDeletePlaylist(playlistId);
+        dispatch(requestDeletePlaylist(playlistId));
     }
 
-    onEdit = (event, playlistId) => {
+    const onEdit = (event, playlistId) => {
         event.stopPropagation();
-        this.navigateToPlaylist(Mode.Edit, playlistId);
+        navigateToPlaylist(Mode.Edit, playlistId);
     }
 
-    render() {
-        const { playlists } = this.props;
-
-        return (
-            <div>
-                {playlists.length === 0 ?
-                    <section className="no-playlist">
-                        You have no playlist as of now
-                        <button className="btn btn-warning" onClick={() => this.navigateToPlaylist(Mode.Add)}>
-                            Click here to add playlist
+    return (
+        <div>
+            {playlists.length === 0 ?
+                <section className="no-playlist">
+                    You have no playlist as of now
+                        <button className="btn btn-warning" onClick={() => navigateToPlaylist(Mode.Add)}>
+                        Click here to add playlist
                         </button>
-                    </section>
-                    :
-                    <>
-                        <section>
-                            <button className="btn btn-warning add-btn" onClick={() => this.navigateToPlaylist(Mode.Add)}>
-                                Add Playlist
+                </section>
+                :
+                <>
+                    <section>
+                        <button className="btn btn-warning add-btn" onClick={() => navigateToPlaylist(Mode.Add)}>
+                            Add Playlist
                             </button>
-                        </section>
+                    </section>
 
-                        <section className="cards">
-                            {playlists.map(playlist => (
-                                <PlaylistCard
-                                    key={playlist.id}
-                                    playlist={playlist}
-                                    onCardClick={playlistId => this.navigateToPlaylist(Mode.View, playlistId)}
-                                    onEditClick={this.onEdit}
-                                    onDeleteClick={this.onDelete} />
-                            ))}
-                        </section>
-                    </>}
-            </div >
-        );
-    }
-
-    componentDidMount() {
-        this.props.actions.requestPlaylists();
-    }
+                    <section className="cards">
+                        {playlists.map(playlist => (
+                            <PlaylistCard
+                                key={playlist.id}
+                                playlist={playlist}
+                                onCardClick={playlistId => navigateToPlaylist(Mode.View, playlistId)}
+                                onEditClick={onEdit}
+                                onDeleteClick={onDelete} />
+                        ))}
+                    </section>
+                </>}
+        </div >
+    );
 }
-
-const mapStateToProps = state => ({
-    ...state.viewPlaylists
-});
-
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({
-        requestPlaylists,
-        requestDeletePlaylist
-    }, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ViewPlaylists);
